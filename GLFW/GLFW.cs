@@ -34,13 +34,4 @@ public static partial class GLFW
 	}
 
 	#endregion
-
-	public static void Test()
-	{
-		IntPtr lPtr = RegisterDelegate<ErrorCallback>((pCode, pDescription) =>
-		{
-		});
-
-		ErrorCallback? lDelegate = UnregisterDelegate<ErrorCallback>(lPtr);
-	}
 }
