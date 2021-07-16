@@ -3,8 +3,15 @@ using System.Runtime.InteropServices;
 
 public static partial class GLFW
 {
-	public const string LIB = "glfw3-64";
-	// public const string LIB = "glfw3-32";
+#if Windows
+	public const string LIB = "lib_glfw.dll";
+#elif OSX
+	// ToDo: check on mac
+	public const string LIB = "lib_glfw.dylib";
+#elif Linux
+	// ToDo: check on linux
+	public const string LIB = "lib_glfw.so";
+#endif
 
 	#region Delegates
 

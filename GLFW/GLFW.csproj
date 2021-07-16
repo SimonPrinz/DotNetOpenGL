@@ -4,13 +4,29 @@
         <TargetFramework>net5.0</TargetFramework>
         <RootNamespace />
         <Nullable>enable</Nullable>
+        <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
+        <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+        <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(IsWindows)'=='true'">
+        <DefineConstants>Windows</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsOSX)'=='true'">
+        <DefineConstants>OSX</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsLinux)'=='true'">
+        <DefineConstants>Linux</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>
-      <None Update="glfw3-64.dll">
+      <None Update="lib_glfw.dll">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="glfw3-32.dll">
+      <None Update="lib_glfw.dylib">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="lib_glfw.so">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
