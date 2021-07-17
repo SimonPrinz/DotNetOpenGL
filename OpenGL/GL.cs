@@ -1,4 +1,4 @@
-﻿public static class GL
+﻿public class GL
 {
 #if Windows
 	public const string LIB = "opengl32";
