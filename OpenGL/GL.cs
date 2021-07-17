@@ -6,7 +6,6 @@
 	// ToDo: check on mac
 	public const string LIB = "com.apple.opengl";
 #elif Linux
-	// ToDo: check on linux
-	public const string LIB = "libGL.so";
+	public const string LIB = "libGL.so.1";
 #endif
 }

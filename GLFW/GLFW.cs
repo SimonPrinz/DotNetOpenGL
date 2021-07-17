@@ -9,7 +9,6 @@ public static partial class GLFW
 	// ToDo: check on mac
 	public const string LIB = "lib_glfw.dylib";
 #elif Linux
-	// ToDo: check on linux
 	public const string LIB = "lib_glfw.so";
 #endif
 
