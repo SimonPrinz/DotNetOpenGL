@@ -6,7 +6,6 @@ public static partial class GLFW
 #if Windows
 	public const string LIB = "lib_glfw.dll";
 #elif OSX
-	// ToDo: check on mac
 	public const string LIB = "lib_glfw.dylib";
 #elif Linux
 	public const string LIB = "lib_glfw.so";
