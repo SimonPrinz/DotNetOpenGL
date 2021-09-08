@@ -1,12 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
         <RootNamespace />
         <Nullable>enable</Nullable>
         <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
         <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
         <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+        <TargetFrameworks>net5.0;netstandard2.0;netstandard2.1</TargetFrameworks>
+        <LangVersion>9.0</LangVersion>
+        <PackageVersion>0.1.0</PackageVersion>
+        <AssemblyVersion>0.1.0</AssemblyVersion>
+        <PackageProjectUrl>https://github.com/SimonPrinz/DotNetOpenGL</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/SimonPrinz/DotNetOpenGL</RepositoryUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(IsWindows)'=='true'">
