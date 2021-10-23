@@ -1,6 +1,7 @@
-﻿# DotNetOpenGL
+# DotNetOpenGL
 
-> Coming soon...
+[![GitHub license](https://img.shields.io/github/license/SimonPrinz/DotNetOpenGL)](https://github.com/SimonPrinz/DotNetOpenGL/blob/main/LICENSE)
+[![Build](https://github.com/SimonPrinz/DotNetOpenGL/actions/workflows/build.yml/badge.svg)](https://github.com/SimonPrinz/DotNetOpenGL/actions/workflows/build.yml)
 
 ## License
 
