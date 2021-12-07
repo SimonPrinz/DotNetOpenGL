@@ -1,3 +1,5 @@
+﻿using System.Runtime.InteropServices;
+
 /// <summary>
 /// The OpenGL functionality of a forward compatible context, up to version 1.1.<br/>
 /// Extensions promoted to core in this release:
@@ -350,6 +352,281 @@ public class GL11C : GL
 	/// vertex_array
 	/// </summary>
 	public const int VERTEX_ARRAY = 0x8074;
+
+	#endregion
+
+	#region Functions
+
+	#region glEnable
+
+	[DllImport(LIB)]
+	private static extern void glEnable(int pTarget);
+
+	/// <summary>
+	/// Enables the specified OpenGL state.
+	/// </summary>
+	/// <param name="pTarget">the OpenGL state to enable</param>
+	/// <seealso cref="glEnable"/>
+	/// <remarks>http://docs.gl/gl4/glEnable</remarks>
+	public static void Enable(int pTarget) =>
+		glEnable(pTarget);
+
+	#endregion
+
+	#region glDisable
+
+	[DllImport(LIB)]
+	private static extern void glDisable(int pTarget);
+
+	/// <summary>
+	/// Disables the specified OpenGL state.
+	/// </summary>
+	/// <param name="pTarget">the OpenGL state to disable</param>
+	/// <seealso cref="glDisable"/>
+	/// <remarks>http://docs.gl/gl4/glDisable</remarks>
+	public static void Disable(int pTarget) =>
+		glDisable(pTarget);
+
+	#endregion
+
+	#region glBindTexture
+
+	[DllImport(LIB)]
+	private static extern void glBindTexture(int pTarget, int pTexture);
+
+	/// <summary>
+	/// Binds the a texture to a texture target.<br/>
+	/// While a texture object is bound, GL operations on the target to which it is bound affect the bound object,
+	/// and queries of the target to which it is bound return state from the bound object.
+	/// If texture mapping of the dimensionality of the target to which a texture object is bound is enabled,
+	/// the state of the bound texture object directs the texturing operation.
+	/// </summary>
+	/// <param name="pTarget">the texture target. One of: <see cref="TEXTURE_1D"/> <see cref="TEXTURE_2D"/>
+	/// <see cref="GL30.TEXTURE_1D_ARRAY"/> <see cref="GL31.TEXTURE_RECTANGLE"/> <see cref="GL13.TEXTURE_CUBE_MAP"/>
+	/// <see cref="GL13.TEXTURE_3D"/> <see cref="GL30.TEXTURE_2D_ARRAY"/> <see cref="GL40.TEXTURE_CUBE_MAP_ARRAY"/>
+	/// <see cref="GL31.TEXTURE_BUFFER"/> <see cref="GL32.TEXTURE_2D_MULTISAMPLE"/>
+	/// <see cref="GL32.TEXTURE_2D_MULTISAMPLE_ARRAY"/></param>
+	/// <param name="pTexture">the texture object to bind</param>
+	/// <seealso cref="glBindTexture"/>
+	/// <remarks>http://docs.gl/gl4/glBindTexture</remarks>
+	public static void BindTexture(int pTarget, int pTexture) =>
+		glBindTexture(pTarget, pTexture);
+
+	#endregion
+
+	#region glBlendFunc
+
+	[DllImport(LIB)]
+	private static extern void glBlendFunc(int pSFactor, int pDFactor);
+
+	/// <summary>
+	/// Specifies the weighting factors used by the blend equation, for both RGB and alpha functions and for all draw
+	/// buffers.
+	/// </summary>
+	/// <param name="pSFactor">the source weighting factor. One of: <see cref="ZERO"/> <see cref="ONE"/>
+	/// <see cref="SRC_COLOR"/> <see cref="ONE_MINUS_SRC_COLOR"/> <see cref="DST_COLOR"/>
+	/// <see cref="ONE_MINUS_DST_COLOR"/> <see cref="SRC_ALPHA"/> <see cref="ONE_MINUS_SRC_ALPHA"/>
+	/// <see cref="DST_ALPHA"/> <see cref="ONE_MINUS_DST_ALPHA"/> <see cref="GL14.CONSTANT_COLOR"/>
+	/// <see cref="GL14.ONE_MINUS_CONSTANT_COLOR"/> <see cref="GL14.CONSTANT_ALPHA"/>
+	/// <see cref="GL14.ONE_MINUS_CONSTANT_ALPHA"/>
+	/// <see cref="GL11.SRC_ALPHA_SATURATE"/> <see cref="GL33.SRC1_COLOR"/> <see cref="GL33.ONE_MINUS_SRC1_COLOR"/>
+	/// <see cref="GL15.SRC1_ALPHA"/> <see cref="GL33.ONE_MINUS_SRC1_ALPHA"/></param>
+	/// <param name="pDFactor">the destination weighting factor</param>
+	/// <seealso cref="glBlendFunc"/>
+	/// <remarks>http://docs.gl/gl4/glBlendFunc</remarks>
+	public static void BlendFunc(int pSFactor, int pDFactor) =>
+		glBlendFunc(pSFactor, pDFactor);
+
+	#endregion
+
+	#region glClear
+
+	[DllImport(LIB)]
+	private static extern void glClear(int pMask);
+
+	/// <summary>
+	/// Sets portions of every pixel in a particular buffer to the same value. The value to which each buffer is cleared
+	/// depends on the setting of the clear value for that buffer.
+	/// </summary>
+	/// <param name="pMask">Zero or the bitwise OR of one or more values indicating which buffers are to be cleared.
+	/// One or more of: <see cref="COLOR_BUFFER_BIT"/> <see cref="DEPTH_BUFFER_BIT"/> <see cref="STENCIL_BUFFER_BIT"/>
+	/// </param>
+	/// <seealso cref="glClear"/>
+	/// <remarks>http://docs.gl/gl4/glClear</remarks>
+	public static void Clear(int pMask) =>
+		glClear(pMask);
+
+	#endregion
+
+	#region glClearColor
+
+	[DllImport(LIB)]
+	private static extern void glClearColor(float pRed, float pGreen, float pBlue, float pAlpha);
+
+	/// <summary>
+	/// Sets the clear value for fixed-point and floating-point color buffers in RGBA mode. The specified components are
+	/// stored as floating-point values.
+	/// </summary>
+	/// <param name="pRed">the value to which to clear the R channel of the color buffer</param>
+	/// <param name="pGreen">the value to which to clear the G channel of the color buffer</param>
+	/// <param name="pBlue">the value to which to clear the B channel of the color buffer</param>
+	/// <param name="pAlpha">the value to which to clear the A channel of the color buffer</param>
+	/// <seealso cref="glClearColor"/>
+	/// <remarks>http://docs.gl/gl4/glClearColor</remarks>
+	public static void ClearColor(float pRed, float pGreen, float pBlue, float pAlpha) =>
+		glClearColor(pRed, pGreen, pBlue, pAlpha);
+
+	#endregion
+
+	#region glClearDepth
+
+	[DllImport(LIB)]
+	private static extern void glClearDepth(double pDepth);
+
+	/// <summary>
+	/// Sets the depth value used when clearing the depth buffer. When clearing a fixedpoint depth buffer, depth is
+	/// clamped to the range [0,1] and converted to fixed-point. No conversion is applied when clearing a floating-point
+	/// depth buffer.
+	/// </summary>
+	/// <param name="pDepth">the value to which to clear the depth buffer</param>
+	/// <seealso cref="glClearDepth"/>
+	/// <remarks>http://docs.gl/gl4/glClearDepth</remarks>
+	private static void ClearDepth(double pDepth) =>
+		glClearDepth(pDepth);
+
+	#endregion
+
+	#region glClearStencil
+
+	[DllImport(LIB)]
+	private static extern void glClearStencil(int pS);
+
+	/// <summary>
+	/// Sets the value to which to clear the stencil buffer. <c>s</c> is masked to the number of bitplanes in the
+	/// stencil buffer.
+	/// </summary>
+	/// <param name="pS">the value to which to clear the stencil buffer</param>
+	/// <seealso cref="glClearStencil"/>
+	/// <remarks>http://docs.gl/gl4/glClearStencil</remarks>
+	public static void ClearStencil(int pS) =>
+		glClearStencil(pS);
+
+	#endregion
+
+	#region glColorMask
+
+	[DllImport(LIB)]
+	private static extern void glColorMask(bool pRed, bool pGreen, bool pBlue, bool pAlpha);
+
+	/// <summary>
+	/// Masks the writing of R, G, B and A values to all draw buffers. In the initial state, all color values are
+	/// enabled for writing for all draw buffers.
+	/// </summary>
+	/// <param name="pRed">whether R values are written or not</param>
+	/// <param name="pGreen">whether G values are written or not</param>
+	/// <param name="pBlue">whether B values are written or not</param>
+	/// <param name="pAlpha">whether A values are written or not</param>
+	/// <seealso cref="glColorMask"/>
+	/// <remarks>http://docs.gl/gl4/glColorMask</remarks>
+	public static void SetColorMask(bool pRed, bool pGreen, bool pBlue, bool pAlpha) =>
+		glColorMask(pRed, pGreen, pBlue, pAlpha);
+
+	#endregion
+
+	#region glCullFace
+
+	[DllImport(LIB)]
+	private static extern void glCullFace(int pMode);
+
+	/// <summary>
+	/// Specifies which polygon faces are culled if CULL_FACE is enabled. Front-facing polygons are rasterized if either
+	/// culling is disabled or the CullFace mode is BACK while back-facing polygons are rasterized only if either
+	/// culling is disabled or the CullFace mode is FRONT. The initial setting of the CullFace mode is BACK.
+	/// Initially, culling is disabled.
+	/// </summary>
+	/// <param name="pMode">the CullFace mode. One of: <see cref="FRONT"/> <see cref="BACK"/>
+	/// <see cref="FRONT_AND_BACK"/></param>
+	/// <seealso cref="glCullFace"/>
+	/// <remarks>http://docs.gl/gl4/glCullFace</remarks>
+	public static void SetCullFace(int pMode) =>
+		glCullFace(pMode);
+
+	#endregion
+
+	#region glDepthFunc
+
+	[DllImport(LIB)]
+	private static extern void glDepthFunc(int pFunc);
+
+	/// <summary>
+	/// Specifies the comparison that takes place during the depth buffer test (when DEPTH_TEST is enabled).
+	/// </summary>
+	/// <param name="pFunc">the depth test comparison. One of: <see cref="NEVER"/> <see cref="ALWAYS"/>
+	/// <see cref="LESS"/> <see cref="LEQUAL"/> <see cref="EQUAL"/> <see cref="GREATER"/> <see cref="GEQUAL"/>
+	/// <see cref="NOTEQUAL"/></param>
+	/// <seealso cref="glDepthFunc"/>
+	/// <remarks>http://docs.gl/gl4/glDepthFunc</remarks>
+	public static void SetDepthFunc(int pFunc) =>
+		glDepthFunc(pFunc);
+
+	#endregion
+
+	#region glDepthMask
+
+	[DllImport(LIB)]
+	private static extern void glDepthMask(bool pFlag);
+
+	/// <summary>
+	/// Masks the writing of depth values to the depth buffer. In the initial state, the depth buffer is enabled for
+	/// writing.
+	/// </summary>
+	/// <param name="pFlag">whether depth values are written or not.</param>
+	/// <seealso cref="glDepthMask"/>
+	/// <remarks>http://docs.gl/gl4/glDepthMask</remarks>
+	public static void SetDepthMask(bool pFlag) =>
+		glDepthMask(pFlag);
+
+	#endregion
+
+	#region glDepthRange
+
+	[DllImport(LIB)]
+	private static extern void glDepthRange(double pNear, double pFar);
+
+	/// <summary>
+	/// Sets the depth range for all viewports to the same values.
+	/// </summary>
+	/// <param name="pNear">the near depth range</param>
+	/// <param name="pFar">the far depth range</param>
+	/// <seealso cref="glDepthRange"/>
+	/// <remarks>http://docs.gl/gl4/glDepthRange</remarks>
+	public static void SetDepthRange(double pNear, double pFar) =>
+		glDepthRange(pNear, pFar);
+
+	#endregion
+
+	#region glDrawArrays
+
+	[DllImport(LIB)]
+	private static extern void glDrawArrays(int pMode, int pFirst, int pCount);
+
+	/// <summary>
+	/// Constructs a sequence of geometric primitives by successively transferring elements for <paramref name="pCount"/>
+	/// vertices. Elements <paramref name="pFirst"/> through <paramref name="pFirst"/> + <paramref name="pCount"/> &ndash;
+	/// 1 of each enabled non-instanced array are transferred to the GL.<br/>
+	/// If an array corresponding to an attribute required by a vertex shader is not enabled, then the corresponding
+	/// element is taken from the current attribute state. If an array is enabled, the corresponding current vertex
+	/// attribute value is unaffected by the execution of this function.
+	/// </summary>
+	/// <param name="pMode">the kind of primitives being constructed</param>
+	/// <param name="pFirst">the first vertex to transfer to the GL</param>
+	/// <param name="pCount">the number of vertices after <paramref name="pFirst"/> to transfer to the GL</param>
+	/// <seealso cref="glDrawArrays"/>
+	/// <remarks>http://docs.gl/gl4/glDrawArrays</remarks>
+	public static void DrawArrays(int pMode, int pFirst, int pCount) =>
+		glDrawArrays(pMode, pFirst, pCount);
+
+	#endregion
 
 	#endregion
 }

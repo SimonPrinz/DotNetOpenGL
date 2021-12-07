@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 public static partial class GLFW
 {
 #if Windows
-	public const string LIB = "lib_glfw.dll";
+	public const string LIB = "lib/glfw.dll";
 #elif OSX
-	public const string LIB = "lib_glfw.dylib";
+	public const string LIB = "lib/glfw.dylib";
 #elif Linux
-	public const string LIB = "lib_glfw.so";
+	public const string LIB = "lib/glfw.so";
 #endif
 
 	#region Delegates
